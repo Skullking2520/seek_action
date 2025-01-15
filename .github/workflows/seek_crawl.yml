@@ -18,12 +18,12 @@ jobs:
       - name: Install Chrome and ChromeDriver
         run: |
           sudo apt-get update
-          sudo apt-get install -y wget unzip google-chrome-stable
-          CHROME_DRIVER_VERSION=131.0.6778.264
-          wget -N "https://chromedriver.storage.googleapis.com/${CHROME_DRIVER_VERSION}/chromedriver_linux64.zip"
+          sudo apt-get remove google-chrome-stable -y
+          wget -N https://chromedriver.storage.googleapis.com/116.0.5845.96/chromedriver_linux64.zip
           unzip chromedriver_linux64.zip -d /usr/bin/
           chmod +x /usr/bin/chromedriver
           rm chromedriver_linux64.zip
+          chromedriver --version
 
       - name: Install depandencies
         run: |
