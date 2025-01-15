@@ -28,7 +28,7 @@ jobs:
           sudo apt-get install -y unzip
           wget https://storage.googleapis.com/chrome-for-testing-public/132.0.6834.83/linux64/chrome-linux64.zip
           unzip chrome-linux64.zip
-          sudo mv ./chrome-linux64/chrome-linux64 /usr/local/bin/
+          sudo mv ./chrome-linux64 /usr/local/bin/
           sudo chmod +x /usr/local/bin/chrome-linux64
 
       - name: Install depandencies
