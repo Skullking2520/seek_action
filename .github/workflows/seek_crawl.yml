@@ -20,10 +20,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y wget unzip
           sudo apt-get install -y google-chrome-stable
-          CHROME_DRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)
+          CHROME_DRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE_131)
           wget -N "https://chromedriver.storage.googleapis.com/${CHROME_DRIVER_VERSION}/chromedriver_linux64.zip"
-          unzip chromedriver_linux64.zip -d ~/bin/
-          sudo mv ~/bin/chromedriver /usr/bin/chromedriver
+          unzip chromedriver_linux64.zip -d /usr/bin/
+          chmod +x /usr/bin/chromedriver
           rm chromedriver_linux64.zip
 
       - name: Install depandencies
