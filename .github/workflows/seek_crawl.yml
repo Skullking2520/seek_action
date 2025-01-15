@@ -15,15 +15,16 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Install Chrome and ChromeDriver
+      - name: Install Google Chrome
         run: |
-          sudo apt-get update
-          sudo apt-get remove google-chrome-stable -y
-          wget -N https://chromedriver.storage.googleapis.com/116.0.5845.96/chromedriver_linux64.zip
-          unzip chromedriver_linux64.zip -d /usr/bin/
-          chmod +x /usr/bin/chromedriver
-          rm chromedriver_linux64.zip
-          chromedriver --version
+           sudo apt-get install -y google-chrome-stable=116.0.5845.96-1
+
+      - name: Install Chromedriver
+        run: |
+          wget https://chromedriver.storage.googleapis.com/116.0.5845.96/chromedriver_linux64.zip
+          unzip chromedriver_linux64.zip
+          sudo mv chromedriver /usr/bin/chromedriver
+          sudo chmod +x /usr/bin/chromedriver
 
       - name: Install depandencies
         run: |
