@@ -15,6 +15,17 @@ jobs:
         with:
           python-version: "3.x"
 
+      - name: Install Chrome and ChromeDriver
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget unzip
+          sudo apt-get install -y google-chrome-stable
+          CHROME_DRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)
+          wget -N "https://chromedriver.storage.googleapis.com/${CHROME_DRIVER_VERSION}/chromedriver_linux64.zip"
+          unzip chromedriver_linux64.zip -d ~/bin/
+          sudo mv ~/bin/chromedriver /usr/bin/chromedriver
+          rm chromedriver_linux64.zip
+
       - name: Install depandencies
         run: |
           python -m pip install --upgrade pip
