@@ -17,14 +17,19 @@ jobs:
 
       - name: Install Google Chrome
         run: |
-           sudo apt-get install -y google-chrome-stable=132.0.6834.83
+          set -ex
+          apt-get update -y
+          wget <https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb>
+          sudo apt install -y ./google-chrome-stable_current_amd64.deb
+          sudo apt-get install -y -f
 
       - name: Install Chromedriver
         run: |
-          wget https://chromedriver.storage.googleapis.com/132.0.6834.83/chromedriver_linux64.zip
-          unzip chromedriver_linux64.zip
-          sudo mv chromedriver /usr/bin/chromedriver
-          sudo chmod +x /usr/bin/chromedriver
+          apt-get install -y unzip
+          wget <	https://storage.googleapis.com/chrome-for-testing-public/132.0.6834.83/linux64/chrome-linux64.zip>
+          unzip chrome-linux64.zip
+          sudo ./chrome-linux64/chromedriver /usr/local/bin/
+          sudo chmod +x /usr/local/bin/chromedriver
 
       - name: Install depandencies
         run: |
