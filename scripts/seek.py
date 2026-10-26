@@ -1,3 +1,4 @@
+import os
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
@@ -17,8 +18,6 @@ options.add_argument("--disable-gpu")
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
 
-service = Service("/usr/bin/chromedriver")
-driver = webdriver.Chrome(service=service, options=options)
 
 def next_button_exists():
     try:
@@ -33,6 +32,9 @@ def job_code_find(str_find):
     return found
 
 def main():
+    global driver
+    service = Service(os.environ["CHROMEDRIVER_PATH"]) if os.environ.get("CHROMEDRIVER_PATH") else Service()
+    driver = webdriver.Chrome(service=service, options=options)
     csv_file = open("jobs.csv", mode="w", newline="", encoding="utf-8")
     fieldnames = [
         "job_code",

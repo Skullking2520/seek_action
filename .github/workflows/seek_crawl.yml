@@ -48,5 +48,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run code
+        env:
+          CHROMEDRIVER_PATH: /usr/local/bin/chromedriver
         run: |
-          python seek.py
+          python scripts/seek.py
