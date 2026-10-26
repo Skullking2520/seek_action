@@ -3,12 +3,9 @@ name: Python Package
 on:
   push:
     branches: [master]
-    paths-ignore:
-      - "**/*.md"
-      - "docs/**"
-      - ".gitignore"
-      - ".env.example"
-      - ".github/workflows/**"
+    paths:
+      - "**/*.py"
+      - "requirements.txt"
 
 permissions:
   contents: read
