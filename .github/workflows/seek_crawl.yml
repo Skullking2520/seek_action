@@ -3,6 +3,14 @@ name: Python Package
 on:
   push:
     branches: [master]
+    paths-ignore:
+      - "**/*.md"
+      - "docs/**"
+      - ".gitignore"
+      - ".env.example"
+
+permissions:
+  contents: read
 
 jobs:
   release-build:

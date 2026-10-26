@@ -31,3 +31,16 @@ python seek.py
 ## 관련 인턴 업무
 
 [Jora 수집](https://github.com/Skullking2520/jora_scrapping) · [YourCareer 수집](https://github.com/Skullking2520/yourcareer-au-scrapping) · [직무 역량 추출](https://github.com/Skullking2520/Skillls_extract)
+
+
+## 파일을 읽는 순서
+
+| 시작 파일 | 역할 |
+| --- | --- |
+| [seek.py](<seek.py>) | 목록 탐색·상세 수집·jobs.csv 저장 |
+
+전체 파일과 분할 스크립트는 [구조 안내](docs/STRUCTURE.md)에 정리했습니다.
+
+## 저장소 관리
+
+실행 결과·인증 파일은 버전 관리에서 제외합니다. 공개 소스와 수집 데이터의 공개 범위는 구분하며, 인턴 업무 데이터·시트 접근 권한은 포함하지 않습니다. 보안 관련 내용은 [관리 기준](SECURITY.md)을 참고하세요.
