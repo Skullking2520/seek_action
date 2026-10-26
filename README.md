@@ -12,21 +12,21 @@ Seeka Technology 소프트웨어 개발 인턴 업무로 진행했습니다. 인
 | --- | --- |
 | [seek.py](scripts/seek.py) | 목록과 상세 페이지를 순회해 채용 정보 수집 |
 | [requirements.txt](requirements.txt) | Python 의존성 |
-| [자동 실행 설정](.github/workflows/seek_crawl.yml) | `master` push를 계기로 스크립트 실행 |
+| [자동 실행 설정](.github/workflows/seek_crawl.yml) | 명시적인 수동 실행으로 스크립트 실행 |
 | `jobs.csv` | 실행 중 생성되는 수집 결과 |
 
 현재 코드는 첫 25개 목록 페이지를 순회합니다. 스프레드시트 적재·역량 추출은 다른 인턴 저장소에서 다루며, 이 저장소의 출력은 CSV입니다.
 
 ## 실행 조건
 
-Python, Chrome과 호환되는 ChromeDriver가 필요합니다. `CHROMEDRIVER_PATH`를 설정하면 해당 드라이버를 사용하며, 생략하면 Selenium의 기본 드라이버 탐색을 사용합니다. 워크플로는 설치한 드라이버 경로를 명시합니다.
+Python, Chrome과 호환되는 ChromeDriver가 필요합니다. `CHROMEDRIVER_PATH`를 설정하면 해당 드라이버를 사용하며, 생략하면 Selenium의 기본 드라이버 탐색을 사용합니다. 워크플로는 Selenium의 기본 드라이버 탐색을 사용하며, 특정 Chrome 버전에 고정한 드라이버를 내려받지 않습니다.
 
 ```bash
 python -m pip install -r requirements.txt
 python scripts/seek.py
 ```
 
-수집 대상 페이지의 구조에 의존하므로 현재 사이트에 맞는 선택자와 실행 환경을 확인해야 합니다. 저장소의 workflow는 `master` push에 연결돼 있으며, 워크플로의 경로 필터는 Python 소스·의존성 변경에만 반응하므로 문서 변경으로 수집을 실행하지 않습니다.
+수집 대상 페이지의 구조에 의존하므로 현재 사이트에 맞는 선택자와 실행 환경을 확인해야 합니다. 워크플로는 Actions의 수동 실행만 허용합니다. `confirm_external_access`를 체크해야 수집이 시작되며, push·문서 변경·PR 병합으로는 수집하지 않습니다.
 
 ## 관련 인턴 업무
 
