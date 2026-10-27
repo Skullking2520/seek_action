@@ -2,9 +2,9 @@
 
 호주 SEEK의 Victoria 지역 채용 공고에서 회사·위치·근무 형태·급여·상세 설명을 수집해 CSV로 저장하는 스크립트입니다.
 
-## 수행 배경
+Seeka Technology 인턴 기간(2025.01–05)에 작성한 코드입니다.
 
-Seeka Technology 소프트웨어 개발 인턴 업무로 진행했습니다. 인턴 기간은 2025년 1월–5월이며, 원격근무로 데이터 수집·처리 업무를 수행했습니다.
+**시작점:** [seek.py](scripts/seek.py) · **출력:** `jobs.csv` · **수집 범위:** 목록 페이지 1–25
 
 ## 코드와 결과
 
@@ -12,7 +12,7 @@ Seeka Technology 소프트웨어 개발 인턴 업무로 진행했습니다. 인
 | --- | --- |
 | [seek.py](scripts/seek.py) | 목록과 상세 페이지를 순회해 채용 정보 수집 |
 | [requirements.txt](requirements.txt) | Python 의존성 |
-| [자동 실행 설정](.github/workflows/seek_crawl.yml) | 명시적인 수동 실행으로 스크립트 실행 |
+| [수동 실행 설정](.github/workflows/seek_crawl.yml) | 명시적인 수동 실행으로 스크립트 실행 |
 | `jobs.csv` | 실행 중 생성되는 수집 결과 |
 
 현재 코드는 첫 25개 목록 페이지를 순회합니다. 스프레드시트 적재·역량 추출은 다른 인턴 저장소에서 다루며, 이 저장소의 출력은 CSV입니다.
@@ -32,10 +32,8 @@ python scripts/seek.py
 
 [Jora 수집](https://github.com/Skullking2520/jora_scrapping) · [YourCareer 수집](https://github.com/Skullking2520/yourcareer-au-scrapping) · [직무 역량 추출](https://github.com/Skullking2520/Skillls_extract)
 
-## 저장소 관리
+## 코드와 자료의 범위
 
-실행 결과·인증 파일은 버전 관리에서 제외합니다. 공개 소스와 수집 데이터의 공개 범위는 구분하며, 인턴 업무 데이터·시트 접근 권한은 포함하지 않습니다. 현재 파일의 제외 규칙은 이미 추적된 자료나 과거 커밋의 노출을 제거하지 않습니다.
+업무 수집 원본과 인증정보는 실행 예제로 제공하지 않습니다. 생성 CSV는 버전 관리에서 제외하며, 제외 규칙은 과거 이력을 제거하지 않습니다.
 
-## 저장소 구성
-
-이번 정리에서 수집 코드을 `scripts/`로 옮겼습니다. 의존성과 설정 예시는 루트에 두며, 실행 명령의 기준 경로는 저장소 루트입니다.
+이번 정리에서 수집 코드를 `scripts/`로 옮겼습니다. 의존성과 설정 예시는 루트에 두며, 실행 명령의 기준 경로는 저장소 루트입니다.
