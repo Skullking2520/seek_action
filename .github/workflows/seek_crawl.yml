@@ -1,11 +1,20 @@
 name: Python Package
 
 on:
-  push:
-    branches: [master]
+  workflow_dispatch:
+    inputs:
+      confirm_external_access:
+        description: "Run external collection or write to the configured test spreadsheet"
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
 
 jobs:
   release-build:
+    if: ${{ inputs.confirm_external_access == true }}
     runs-on: ubuntu-latest
 
     steps:
@@ -23,14 +32,6 @@ jobs:
           sudo apt install -y ./google-chrome-stable_current_amd64.deb
           sudo apt-get install -y -f
 
-      - name: Install Chromedriver
-        run: |
-          sudo apt-get install -y unzip
-          wget https://storage.googleapis.com/chrome-for-testing-public/132.0.6834.83/linux64/chromedriver-linux64.zip
-          unzip chromedriver-linux64.zip
-          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/
-          sudo chmod +x /usr/local/bin/chromedriver
-
       - name: Kill leftover Chrome processes
         run: |
           sudo pkill -9 chrome || true
@@ -43,4 +44,4 @@ jobs:
 
       - name: Run code
         run: |
-          python seek.py
+          python scripts/seek.py
